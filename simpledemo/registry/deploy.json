@@ -12,12 +12,7 @@
 	    "network": "BRIDGE",
 	    "parameters": [],
 	    "portMappings": [
-		{
-		    "containerPort": 5000,
-		    "hostPort": 0,
-		    "protocol": "tcp",
-		    "servicePort": 5000
-		}
+		{ "containerPort": 5000, "hostPort": 0 }
 	    ]
 	},
 	"volumes": [{
@@ -31,7 +26,6 @@
         "path": "/v2",
         "gracePeriodSeconds": 3,
         "intervalSeconds": 10,
-        "portIndex": 0,
         "timeoutSeconds": 10,
         "maxConsecutiveFailures": 3
     }],

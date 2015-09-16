@@ -6,6 +6,7 @@ ADD splunk-6.2.3-264376-Linux-x86_64.tgz /opt
 #RUN groupadd -g 1239304281 splunk
 #RUN useradd -l -u 1239304281 -g 1239304281 splunk
 VOLUME /opt/splunk/var
+VOLUME /usr/local/apps
 RUN /opt/splunk/bin/splunk enable boot-start --accept-license && /opt/splunk/bin/splunk start --accept-license
 RUN chmod -R 755 /etc/init.d/splunk
 #RUN chown -R splunk:splunk /opt/hunk

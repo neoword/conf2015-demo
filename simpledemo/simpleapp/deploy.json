@@ -1,25 +1,22 @@
 {
-    "id": "/splunk/search-head",
+    "id": "/conf2015-demo/simpleapp",
     "instances": 1,
-    "cpus": 1.0,
-    "mem": 1024,
-    "disk": 128,
+    "cpus": 0.5,
+    "mem": 256,
+    "disk": 150,
     "constraints": [["hostname", "CLUSTER", "172.31.2.11"]],
     "container": {
-	"type": "DOCKER",
 	"docker": {
-	    "image": "172.31.2.11:31000/splunk:6.2.3",
+	    "type": "DOCKER",
+	    "image": "172.31.2.11:31000/conf2015-demo/simpleapp:0.1",
+	    "parameters": [],
 	    "network": "BRIDGE",
 	    "portMappings": [
-		{ "containerPort": 8000, "hostPort": 0, "protocol": "tcp", "servicePort": 8000 },
-		{ "containerPort": 8089, "hostPort": 0, "protocol": "tcp", "servicePort": 8089 }
-	    ]
+		{ "containerPort": 5000, "hostPort": 0 }
+	    ],
+	    "forcePullImage": true
 	},
 	"volumes": [{
-	    "containerPath": "/opt/splunk/var",
-	    "hostPath": "/var/splunk-container",
-            "mode": "RW"
-	},{
 	    "containerPath": "/usr/local/apps",
 	    "hostPath": "/usr/local/apps",
             "mode": "RW"
@@ -27,7 +24,7 @@
     },
     "healthChecks": [{
 	"protocol": "HTTP",
-	"path": "/",
+	"path": "/health",
 	"portIndex": 0,
 	"gracePeriodSeconds": 5,
 	"intervalSeconds": 20,
@@ -36,5 +33,5 @@
 	"backoffFactor": 1.15,
 	"timeoutSeconds": 10
     }],
-    "ports": [ 0, 0 ]
+    "ports": [ 0 ]
 }
