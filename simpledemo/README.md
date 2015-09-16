@@ -21,7 +21,7 @@
 
 * `docker build -t 172.31.2.11:31000:31000/registry:0.1 simpleapp/`
 
-## SIMPLE-EXAMPLE) Show this running on marathon
+## SIMPLE-EXAMPLE :: Show this running on marathon
 
 ### Build docker (with volumes)
 
