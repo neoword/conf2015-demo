@@ -11,8 +11,8 @@
 	    "image": "172.31.2.11:31000/splunk:6.2.3",
 	    "network": "BRIDGE",
 	    "portMappings": [
-		{ "containerPort": 8000, "hostPort": 0, "protocol": "tcp", "servicePort": 8000 },
-		{ "containerPort": 8089, "hostPort": 0, "protocol": "tcp", "servicePort": 8089 }
+		{ "containerPort": 8000, "hostPort": 0 },
+		{ "containerPort": 8089, "hostPort": 0 }
 	    ]
 	},
 	"volumes": [{

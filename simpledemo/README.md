@@ -13,6 +13,11 @@
 * `curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" "http://172.31.3.11:8080/v2/apps" -d @registry/deploy.json`
 * (show it is working) - `http://172.31.2.11:31000/v2/_catalog`
 
+NOTE: Need to setup marathon/mesos/docker slaves with insecure registry
+E.G.: On each Slave,
+* Edit `/etc/default/docker`
+* Add `--insecure-registry 172.31.2.11:31000` to the options
+
 ## Now Deploy Splunk Search Head (in a container!!)
 * (show the dockerfile)
 * (show how it exports the "static portion")
@@ -23,6 +28,7 @@
 * (show it is working) - `http://172.31.2.11:31000/v2/splunk/tags/list`
 * (show deploy.json)
 * Deploy it to Marathon - `curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" "http://172.31.3.11:8080/v2/apps" -d @splunk/deploy.json`
+* (show it is working) - `http://172.31.2.11:31001`
 
 ## SIMPLE-EXAMPLE :: Show this running on marathon
 

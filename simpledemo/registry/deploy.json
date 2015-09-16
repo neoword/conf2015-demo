@@ -2,18 +2,18 @@
     "id": "/docker/registry",
     "instances": 1,
     "cpus": 0.5,
-    "mem": 1024.0,
+    "mem": 256.0,
     "disk": 128,
     "constraints": [["hostname", "CLUSTER", "172.31.2.11"]],
     "container": {
+	"type": "DOCKER",
 	"docker": {
-	    "type": "DOCKER",
 	    "image": "registry:2",
 	    "network": "BRIDGE",
-	    "parameters": [],
 	    "portMappings": [
 		{ "containerPort": 5000, "hostPort": 0 }
-	    ]
+	    ],
+	    "parameters": []
 	},
 	"volumes": [{
 		"hostPath": "/opt/docker-registry/data",
