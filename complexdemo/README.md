@@ -2,22 +2,12 @@
 
 ## Install kafka-mesos on master1
 * https://github.com/mesos/kafka
-* `kafka-mesos.properties`:
+* See `kafka-mesos.properties`
+* Add two brokers - `/opt/kafka-mesos/kafka-mesos.sh broker add 0,1 --heap 256 --mem 512`
+* Start them - `/opt/kafka-mesos/kafka-mesos.sh broker start 0,1`
+* Show their status - `/opt/kafka-mesos/kafka-mesos.sh broker list`
+* Show any topics - `/opt/kafka-mesos/kafka-mesos.sh topic list`
 
-```
-# Scheduler options defaults. See `./kafka-mesos.sh help scheduler` for more details
-debug=true
-
-user=vagrant
-
-storage=file:kafka-mesos.json
-
-master=zk://172.31.0.11:2181/mesos
-
-zk=172.31.0.11:2181
-
-api=http://172.31.1.11:7000
-```
 
 ## Show kafka-mesos running
 * (show kafka running as mesos module) `http://172.31.1.11:5050/#/frameworks`
@@ -34,4 +24,22 @@ api=http://172.31.1.11:7000
 ## Install / Configure Camus
 * added camus user
 * configure /etc/camus/camus.properties (see file checked in this project)
+* as camus user... run it - `camus-run -P /etc/camus/camus.properties -Dlog4j.configuration=/etc/camus/log4j.xml`
+* verify it ran - `hdfs dfs -text topics/bigstream/hourly/2015/09/17/03/bigstream.0.0.100.100.1442476800000.avro`
+
+## Install / Configure Hunk
+* TBD
+
+## Deploy Samza Task
+* Install Task - TBD
+* Deploy to YARN - TBD
+* show it running - TBD
+
+## Install / Configure SplunkForwarder
+* TBD
+
+## Deploy ComplexApp demo
+* Build complexapp container - `docker build -t 172.31.2.11:31000/conf2015-demo/complexapp:0.1 complexapp/`
+* Push it to local registry - `docker push 172.31.2.11:31000/conf2015-demo/complexapp:0.1`
+* (deploy deploy.json) - `curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" "http://172.31.3.11:8080/v2/apps" -d @complexapp/deploy.json`
 
