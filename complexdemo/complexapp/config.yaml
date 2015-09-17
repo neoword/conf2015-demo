@@ -1,0 +1,3 @@
+kafkaBrokers: 172.31.2.12:31000,172.31.2.12:31001
+schemaRegistryUrl: http://172.31.2.12:31002
+topic: bigstream

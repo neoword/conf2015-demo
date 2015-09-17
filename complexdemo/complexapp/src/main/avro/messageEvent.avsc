@@ -1,0 +1,9 @@
+{"namespace": "com.homeaway.bigdata.core",
+ "type": "record",
+ "name": "MessageEvent",
+ "fields": [
+     {"name": "time", "type": "long"},
+     {"name": "host",  "type": "string"},
+     {"name": "message", "type": ["null", "string"], "default": null}
+ ]
+}
