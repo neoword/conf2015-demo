@@ -10,8 +10,9 @@ VOLUME /usr/local/apps
 RUN /opt/splunk/bin/splunk enable boot-start --accept-license && /opt/splunk/bin/splunk start --accept-license
 RUN chmod -R 755 /etc/init.d/splunk
 #RUN chown -R splunk:splunk /opt/hunk
+COPY inputs.conf /opt/splunk/etc/system/local/inputs.conf
 EXPOSE 8000
 EXPOSE 8089
-#EXPOSE 9997
+EXPOSE 9997
 #USER splunk
 CMD /opt/splunk/bin/splunk start --accept-license && tail -f /opt/splunk/var/log/splunk/splunkd.log

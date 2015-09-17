@@ -12,8 +12,10 @@
 	    "network": "BRIDGE",
 	    "portMappings": [
 		{ "containerPort": 8000, "hostPort": 0 },
-		{ "containerPort": 8089, "hostPort": 0 }
-	    ]
+		{ "containerPort": 8089, "hostPort": 0 },
+		{ "containerPort": 9997, "hostPort": 0 }
+	    ],
+	    "forcePullImage": true
 	},
 	"volumes": [{
 	    "containerPath": "/opt/splunk/var",
@@ -36,5 +38,5 @@
 	"backoffFactor": 1.15,
 	"timeoutSeconds": 10
     }],
-    "ports": [ 0, 0 ]
+    "ports": [ 0, 0, 0 ]
 }

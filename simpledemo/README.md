@@ -43,7 +43,3 @@ E.G.: On each Slave,
 * (verify its up) - `http://172.31.2.11:31003/health`
 * Run some logs `http://172.31.2.11:31003/logShakespeare`
 
-## HIGH VOLUME EXAMPLE
-
-### Show Kafka (running as mesos module)
-* 
