@@ -20,10 +20,15 @@ logger.addHandler(handler)
 # declare our flask app
 app = Flask(__name__)
 
-# health check
+# home page
+@app.route("/")
+def homePage():
+    return "<h1>Simple App Demo</h1>\n<li><a href=\"logShakespeare\">Log some Shakespeare</a>"
+
+# home page
 @app.route("/health")
-def health():
-    return "up"
+def healthCheck():
+    return "OK"
 
 # log some stuff
 @app.route("/logShakespeare")
@@ -40,8 +45,8 @@ def log_shakespeare():
         for i in range(0, 8192):
             logger.debug("%s,%s:%s" % (j,i,lines[i]));
             
-        # ...every 10 seconds
-        time.sleep(10)
+        # ...every 4 seconds
+        time.sleep(4)
     return "done"
 
 if __name__ == "__main__":

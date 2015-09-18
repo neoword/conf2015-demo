@@ -17,6 +17,7 @@ NOTE: Need to setup marathon/mesos/docker slaves with insecure registry
 E.G.: On each Slave,
 * Edit `/etc/default/docker`
 * Add `--insecure-registry 172.31.2.11:31000` to the options
+* `service docker restart`
 
 ## Now Deploy Splunk Search Head (in a container!!)
 * (show the dockerfile)
