@@ -3,8 +3,8 @@
     "instances": 1,
     "cpus": 0.5,
     "mem": 128,
-    "disk": 100,
-    "constraints": [["hostname", "UNIQUE"]],
+    "disk": 10,
+    "constraints": [["hostname", "CLUSTER", "slave2"]],
     "container": {
         "type": "DOCKER",
         "docker": {

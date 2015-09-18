@@ -6,8 +6,8 @@
     "disk": 100,
     "constraints": [["hostname", "CLUSTER", "172.31.2.12"]],
     "container": {
+	"type": "DOCKER",
 	"docker": {
-	    "type": "DOCKER",
 	    "image": "172.31.2.11:31000/confluent/schema-registry:1.0.1",
 	    "parameters": [],
 	    "network": "BRIDGE",

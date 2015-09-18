@@ -4,6 +4,7 @@ import org.apache.kafka.clients.producer.Producer;
 
 import com.homeaway.bigdata.core.MessageEvent;
 import com.homeaway.bigdata.health.SimpleHealthCheck;
+import com.homeaway.bigdata.resources.HomeResource;
 import com.homeaway.bigdata.resources.LogResource;
 
 import io.dropwizard.Application;
@@ -31,6 +32,6 @@ public class ComplexappApplication extends Application<ComplexappConfiguration> 
         environment.healthChecks().register("simple", new SimpleHealthCheck());
         Producer<String, MessageEvent> producer = configuration.getProducer();
         environment.jersey().register(new LogResource(producer, configuration.getTopic()));
+        environment.jersey().register(new HomeResource());
     }
-
 }

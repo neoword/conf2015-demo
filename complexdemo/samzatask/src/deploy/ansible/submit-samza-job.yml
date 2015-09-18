@@ -1,0 +1,29 @@
+- hosts: edge-node
+  vars:
+    jobdir: samza-jars/{{ artifactId }}.{{ env }}
+    jobfile: "{{ artifactId }}-{{ artifactVersion }}-dist.tar.gz"
+  tasks:
+  - name: Remove directory if it already exists
+    file: path={{ jobdir }} state=absent
+
+  - name: Prepare job directory
+    file: path={{ jobdir }} state=directory
+
+  - name: Copy job 
+    copy: src=../../../target/{{ jobfile }} dest=samza-jars/
+
+  - name: Untar samza job
+    unarchive: src={{ ansible_env.PWD }}/samza-jars/{{ jobfile }} dest={{ ansible_env.PWD }}/{{ jobdir }}/ copy=no
+
+  - name: Ensure hdfs directory exists
+    command: hdfs dfs -mkdir -p samza-jars/{{env}}/
+
+  - name: Push samza job to hdfs
+    command: hdfs dfs -put -f samza-jars/{{ jobfile }} samza-jars/{{env}}/
+
+  - name: Submit samza job
+    command: ./bin/run-job.sh --config-factory=org.apache.samza.config.factories.PropertiesConfigFactory --config-path=config/application-{{ env }}.properties
+    args:
+      chdir: samza-jars/{{ artifactId }}.{{ env }}
+    environment:
+      HADOOP_CONF_DIR: /etc/hadoop/conf

@@ -1,0 +1,4 @@
+- hosts: edge-node
+  tasks:
+  - name: Kill samza job
+    shell: yarn application -kill $(yarn application -list 2>/dev/null | grep {{ artifactId }}.{{ env }} | awk '{ print $1}') 2>/dev/null
