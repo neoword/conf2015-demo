@@ -25,7 +25,7 @@ import com.homeaway.bigdata.core.Response;
 @Path("/log")
 @Produces(MediaType.APPLICATION_JSON)
 public class LogResource {
-    private static final int NUMBER_OF_REPS = 100;
+    private static final int NUMBER_OF_REPS = 1000;
 
     private Producer<String,MessageEvent> producer;
     private String topic;

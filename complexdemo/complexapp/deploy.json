@@ -4,7 +4,7 @@
     "cpus": 0.5,
     "mem": 128,
     "disk": 10,
-    "constraints": [["hostname", "CLUSTER", "slave2"]],
+    "constraints": [["hostname", "UNIQUE"]],
     "container": {
         "type": "DOCKER",
         "docker": {

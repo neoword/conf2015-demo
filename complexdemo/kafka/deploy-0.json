@@ -1,0 +1,33 @@
+{
+    "id": "/confluent/kafka/broker-0",
+    "instances": 1,
+    "cpus": 1,
+    "mem": 512,
+    "disk": 100,
+    "constraints": [["hostname", "CLUSTER", "slave2"]],
+    "container": {
+        "type": "DOCKER",
+        "docker": {
+            "image": "172.31.2.11:31000/apache/kafka:0.8.2.1",
+            "parameters": [],
+            "network": "BRIDGE",
+            "portMappings": [
+                { "containerPort": 9092, "hostPort": 0 }
+            ],
+            "forcePullImage": true
+        },
+        "volumes": []
+    },
+    "healthChecks": [{
+        "protocol": "TCP",
+        "portIndex": 0,
+        "gracePeriodSeconds": 5,
+        "intervalSeconds": 20,
+        "maxConsecutiveFailures": 3,
+        "backoffSeconds":1,
+        "backoffFactor": 1.15,
+        "timeoutSeconds": 10
+    }],
+    "cmd": "bin/kafka-server-start.sh config/server-0.properties",
+    "ports": [ 0 ]
+}

@@ -18,6 +18,9 @@ E.G.: On each Slave,
 * Edit `/etc/default/docker`
 * Add `--insecure-registry 172.31.2.11:31000` to the options
 * `service docker restart`
+* ALSO -- VERY IMPORTANT!! -- make sure that /etc/hosts has slave1 and slave2 only ONCE and is bound to 172.31.2.11 and 172.31.2.12 respectively.
+* vagrant halt your machine and vagrant it up
+* make sure marathon is up by doing `vagrant provision marathon`
 
 ## Now Deploy Splunk Search Head (in a container!!)
 * (show the dockerfile)
