@@ -31,7 +31,7 @@ E.G.: On each Slave,
 * (show it is working) - `http://172.31.2.11:31000/v2/_catalog`
 * (show it is working) - `http://172.31.2.11:31000/v2/splunk/tags/list`
 * (show deploy.json)
-* Deploy it to Marathon - `curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" "http://172.31.3.11:8080/v2/apps" -d @splunk/deploy.json`
+* Deploy it to Marathon - `curl -X POST -H "Content-Type: application/json" "http://172.31.3.11:8080/v2/apps" -d @splunk/deploy.json`
 * (show it is working) - `http://172.31.2.11:31001`
 
 ## SIMPLE-EXAMPLE :: Show this running on marathon
